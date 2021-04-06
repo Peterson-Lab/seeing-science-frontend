@@ -1,6 +1,6 @@
 import { ImageQuestionFields } from '../types'
 
-const drtFilePath = '/drt/'
+const drtFilePath = '/drt/questions/'
 
 const practiceQuestionList: ImageQuestionFields[] = [
   {

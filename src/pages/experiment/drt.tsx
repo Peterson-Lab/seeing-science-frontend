@@ -113,7 +113,7 @@ const ReactPsych: React.FC = () => {
             </NumberInputScreen>
             <VideoScreen
               buttonText="Next"
-              url="/react-psych/DRT/instructions/audio_test.mp3"
+              url="/drt/instructions/audio_test.mp3"
               playerProps={{ height: '50px' }}
             >
               <VStack spacing={8} mx={10} mb={10} textAlign="center">
@@ -126,11 +126,11 @@ const ReactPsych: React.FC = () => {
             </VideoScreen>
             <VideoScreen
               buttonText="Next"
-              url="/react-psych/DRT/instructions/DRT_instructions.mp4"
+              url="/drt/instructions/DRT_instructions.mp4"
               playerProps={{ playing: true }}
             />
             <VideoScreen
-              url="/react-psych/DRT/instructions/DRT_demo.mp4"
+              url="/drt/instructions/DRT_demo.mp4"
               buttonText="Next"
               playerProps={{ playing: true }}
             />
