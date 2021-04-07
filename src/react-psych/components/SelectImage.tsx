@@ -1,4 +1,4 @@
-import { Box, Button, HStack, Link, Text, VStack } from '@chakra-ui/react'
+import { Box, HStack, Link, Text, VStack } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { NextChakraImage } from '../../components/NextChakraImage'
 import { sleep } from '../../utils/sleep'
@@ -25,24 +25,20 @@ export const SelectImage: React.FC<SelectImageProps> = ({
   const [responseStart, setResponseStart] = useState(Date.now())
   const [elementClicked, setElementClicked] = useState(-1)
   const [show, setShow] = useState(false)
-  const [buttonError, setButtonError] = useState(false)
 
   // checks that the timeline props were passed.
   if (!timeline) {
     throw new TimelineNodeError()
   }
 
-  const handleClick = (idx: number): void => {
-    setElementClicked(idx)
-  }
-
   // handles the user submitting their selection
-  const handleResponse = (): void => {
+  const handleResponse = (idx: number): void => {
+    setElementClicked(idx)
     const responseEnd = Date.now()
 
     const responseTime = responseEnd - responseStart
 
-    const isCorrect = elementClicked === correct - 1
+    const isCorrect = idx === correct - 1
 
     const targetFile = getFileNameFromPath(stimulus)
     const responseFile_1 = getFileNameFromPath(responses[0].answerImage)
@@ -53,7 +49,7 @@ export const SelectImage: React.FC<SelectImageProps> = ({
     const userResponse: defaultUserResponse = {
       type: 'question',
       node: timeline.index,
-      response: elementClicked + 1,
+      response: idx + 1,
       correct: isCorrect,
       time: responseTime,
       targetFile,
@@ -68,17 +64,6 @@ export const SelectImage: React.FC<SelectImageProps> = ({
   // Saves the time when the question is shown, might want to set this to just active
   useEffect(() => {
     setResponseStart(Date.now())
-  }, [show])
-
-  // Gives time before telling user to select an option
-  useEffect(() => {
-    const maxResponseTime = async (): Promise<void> => {
-      if (show) {
-        await sleep(10000)
-        setButtonError(true)
-      }
-    }
-    maxResponseTime()
   }, [show])
 
   // delay for showing cross and then question
@@ -129,7 +114,7 @@ export const SelectImage: React.FC<SelectImageProps> = ({
               _hover={{ boxShadow: 'outline' }}
               boxShadow={elementClicked === idx ? 'outline' : undefined}
               key={idx}
-              onClick={() => handleClick(idx)}
+              onClick={() => handleResponse(idx)}
             >
               <VStack spacing={4} p={4}>
                 <NextChakraImage
@@ -148,29 +133,10 @@ export const SelectImage: React.FC<SelectImageProps> = ({
           ))}
         </HStack>
         <VStack spacing={2}>
-          {elementClicked === -1 ? (
-            <Box height="20mm" width="1px"></Box>
-          ) : (
-            <Button
-              colorScheme="blue"
-              onClick={handleResponse}
-              mt="5mm"
-              size="lg"
-              height="15mm"
-              width="50mm"
-              fontSize="10mm"
-              fontWeight="800"
-              display={elementClicked !== -1 ? 'flex' : 'none'}
-            >
-              Next
-            </Button>
-          )}
-
-          {buttonError ? (
-            <Text fontSize="6mm" fontWeight="600">
-              Please select one of the options
-            </Text>
-          ) : null}
+          <Box height="20mm" width="1px"></Box>
+          <Text fontSize="6mm" fontWeight="600">
+            Click on the BEST drawing
+          </Text>
         </VStack>
       </>
     )

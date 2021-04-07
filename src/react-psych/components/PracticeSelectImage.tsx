@@ -1,8 +1,6 @@
-import { CheckIcon, CloseIcon } from '@chakra-ui/icons'
 import {
   Box,
   Button,
-  Center,
   Heading,
   HStack,
   Link,
@@ -45,7 +43,7 @@ const createBody = (
   }
 }
 
-const correctItem = (response: ImageResponse, idx: number) => (
+const correctItem = (response: ImageResponse, idx: number): JSX.Element => (
   <Link
     // bgColor="gray.200"
     borderWidth="3px"
@@ -78,7 +76,7 @@ const createIncorrectFeedbackResponses = (
   correct: number,
   elementClicked: number
 ): JSX.Element => {
-  const incorrectItem = (response: ImageResponse, idx: number) => (
+  const incorrectItem = (response: ImageResponse, idx: number): JSX.Element => (
     <Link
       // bgColor="gray.200"
       borderWidth="3px"
@@ -192,8 +190,8 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
   const [responseStart, setResponseStart] = useState(Date.now())
   const [elementClicked, setElementClicked] = useState(-1)
   const [show, setShow] = useState<showState>('cross')
-  const [buttonError, setButtonError] = useState(false)
   const [isCorrect, setIsCorrect] = useState(false)
+  const [showButton, setShowButton] = useState(false)
 
   // checks that the timeline props were passed.
   if (!timeline) {
@@ -202,15 +200,18 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
 
   const handleClick = (idx: number): void => {
     setElementClicked(idx)
-  }
-
-  // handles the user submitting their selection
-  const handleResponse = (): void => {
-    const isCorrectResponse = elementClicked === correct - 1
+    const isCorrectResponse = idx === correct - 1
     setIsCorrect(isCorrectResponse)
     setShow('feedback')
-    // timeline.onFinish(userResponse)
   }
+
+  // // handles the user submitting their selection
+  // const handleResponse = (): void => {
+  //   const isCorrectResponse = elementClicked === correct - 1
+  //   setIsCorrect(isCorrectResponse)
+  //   setShow('feedback')
+  //   // timeline.onFinish(userResponse)
+  // }
 
   const handleFeedbackResponse = (): void => {
     const responseEnd = Date.now()
@@ -231,11 +232,6 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
   useEffect(() => {
     if (show === 'question') {
       setResponseStart(Date.now())
-      const maxResponseTime = async (): Promise<void> => {
-        await sleep(10000)
-        if (show === 'question') setButtonError(true)
-      }
-      maxResponseTime()
     }
   }, [show])
 
@@ -307,29 +303,11 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
         ))}
       </HStack>
       <VStack spacing={2}>
-        {elementClicked === -1 ? (
-          <Box height="20mm" width="1px"></Box>
-        ) : (
-          <Button
-            colorScheme="blue"
-            onClick={handleResponse}
-            mt="5mm"
-            size="lg"
-            height="15mm"
-            width="50mm"
-            fontSize="10mm"
-            fontWeight="800"
-            display={elementClicked !== -1 ? 'flex' : 'none'}
-          >
-            Next
-          </Button>
-        )}
-
-        {buttonError ? (
-          <Text fontSize="6mm" fontWeight="600">
-            Please select one of the options
-          </Text>
-        ) : null}
+        <Box height="20mm" width="1px"></Box>
+        <Text fontSize="6mm" fontWeight="600">
+          Click on the BEST drawing
+        </Text>
+        )
       </VStack>
     </>
   )
@@ -341,6 +319,7 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
         playing={true}
         volume={100}
         height="0px"
+        onEnded={() => setShowButton(true)}
       />
       <NextChakraImage
         height="70mm"
@@ -351,23 +330,29 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
         priority={true}
       />
       <Heading>Incorrect</Heading>
+      <Text fontSize="6mm" fontWeight="600">
+        Not quite. Actually, I like this one because it matches the object
+        exactly
+      </Text>
       <HStack spacing={15}>
         {createIncorrectFeedbackResponses(responses, correct, elementClicked)}
       </HStack>
       <VStack spacing={2}>
-        <Button
-          colorScheme="blue"
-          onClick={handleFeedbackResponse}
-          mt="5mm"
-          size="lg"
-          height="15mm"
-          width="50mm"
-          fontSize="10mm"
-          fontWeight="800"
-          display="flex"
-        >
-          Next
-        </Button>
+        {showButton ? (
+          <Button
+            colorScheme="blue"
+            onClick={handleFeedbackResponse}
+            mt="5mm"
+            size="lg"
+            height="15mm"
+            width="50mm"
+            fontSize="10mm"
+            fontWeight="800"
+            display="flex"
+          >
+            Next
+          </Button>
+        ) : null}
       </VStack>
     </>
   )
@@ -379,6 +364,7 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
         playing={true}
         volume={100}
         height="0px"
+        onEnded={() => setShowButton(true)}
       />
       <NextChakraImage
         height="70mm"
@@ -389,60 +375,33 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
         priority={true}
       />
       <Heading>Correct!</Heading>
+      <Text fontSize="6mm" fontWeight="600">
+        That&apos;s right!
+      </Text>
       <HStack spacing={15}>
         {createCorrectFeedbackResponses(responses, correct)}
       </HStack>
       <VStack spacing={2}>
-        <Button
-          colorScheme="blue"
-          onClick={handleFeedbackResponse}
-          mt="5mm"
-          size="lg"
-          height="15mm"
-          width="50mm"
-          fontSize="10mm"
-          fontWeight="800"
-          display="flex"
-        >
-          Next
-        </Button>
+        {showButton ? (
+          <Button
+            colorScheme="blue"
+            onClick={handleFeedbackResponse}
+            mt="5mm"
+            size="lg"
+            height="15mm"
+            width="50mm"
+            fontSize="10mm"
+            fontWeight="800"
+            display="flex"
+          >
+            Next
+          </Button>
+        ) : null}
       </VStack>
     </>
   )
 
   const feedback = <>{isCorrect ? correctFeedback : incorrectFeedback}</>
-
-  // const feedback = (
-  //   <>
-  //     <Center>
-  //       <VStack spacing="20mm">
-  //         {isCorrect ? (
-  //           <>
-  //             <CheckIcon boxSize="70px" />
-  //             <Heading fontSize="60px">Correct!</Heading>
-  //           </>
-  //         ) : (
-  //           <>
-  //             <CloseIcon boxSize="70px" />
-  //             <Heading fontSize="60px">Incorrect</Heading>
-  //           </>
-  //         )}
-  //         <Button
-  //           colorScheme="blue"
-  //           mt="10mm"
-  //           size="lg"
-  //           height="15mm"
-  //           width="50mm"
-  //           fontSize="10mm"
-  //           fontWeight="800"
-  //           onClick={handleFeedbackResponse}
-  //         >
-  //           Next
-  //         </Button>
-  //       </VStack>
-  //     </Center>
-  //   </>
-  // )
 
   const body = createBody(show, cross, question, feedback)
 
