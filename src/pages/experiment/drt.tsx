@@ -8,7 +8,9 @@ import {
 } from '../../generated/graphql'
 import { createClient } from '../../graphql/createClient'
 import { SelectImage, TextScreen, Timeline } from '../../react-psych'
+import { AudioTestScreen } from '../../react-psych/components/AudioTestScreen'
 import { BeginScreen } from '../../react-psych/components/BeginScreen'
+import { MultipleVideoScreen } from '../../react-psych/components/MultipleVideoScreen'
 import { NumberInputScreen } from '../../react-psych/components/NumberInputScreen'
 import { PracticeSelectImage } from '../../react-psych/components/PracticeSelectImage'
 import { VideoScreen } from '../../react-psych/components/VideoScreen'
@@ -111,40 +113,39 @@ const ReactPsych: React.FC = () => {
             >
               <Heading>Enter your Participant ID</Heading>
             </NumberInputScreen>
-            <VideoScreen
-              buttonText="Next"
+            <AudioTestScreen
+              buttonText="Yes"
               url="/drt/instructions/audio_test.mp3"
-              playerProps={{ height: '50px' }}
+              playerProps={{ height: '50px', playing: true, loop: true }}
             >
               <VStack spacing={8} mx={10} mb={10} textAlign="center">
                 <Heading fontSize="60px">Audio Test</Heading>
                 <Text px={60} fontSize="25px">
-                  Please click the play button below and ensure you can hear the
-                  audio clip, then click Next.
+                  Do you hear the music?
                 </Text>
               </VStack>
-            </VideoScreen>
-            <VideoScreen
+            </AudioTestScreen>
+            <MultipleVideoScreen
+              urls={[
+                '/drt/instructions/DRT_instructions.mp4',
+                '/drt/instructions/DRT_demo.mp4',
+              ]}
               buttonText="Next"
-              url="/drt/instructions/DRT_instructions.mp4"
-              playerProps={{ playing: true }}
-            />
-            <VideoScreen
-              url="/drt/instructions/DRT_demo.mp4"
-              buttonText="Next"
-              playerProps={{ playing: true }}
-            />
+            >
+              <Text fontSize="25px">
+                Press the play button on the bottom left side of the video
+                player to begin playing the video!
+              </Text>
+            </MultipleVideoScreen>
             <VideoScreen
               url="/drt/instructions/practice_question_instructions.m4a"
               buttonText="Start"
               playerProps={{ playing: true }}
             >
-              <VStack spacing={3} mb={5}>
-                <Heading fontSize="60px">Practice Questions</Heading>
-                <Text fontSize="25px">
-                  Now you are going to see a series of practice questions.
-                </Text>
-                <Text fontSize="25px">When you are ready, click start!</Text>
+              <VStack spacing={6} mb={5}>
+                <Heading fontSize="60px">Practice</Heading>
+                <Text fontSize="25px">Now let&apos;s practice!</Text>
+                <Text fontSize="25px">When you are ready, click Start.</Text>
               </VStack>
             </VideoScreen>
             {practiceQuestionList.map((q, idx) => {
@@ -155,16 +156,19 @@ const ReactPsych: React.FC = () => {
               buttonText="Start"
               playerProps={{ playing: true }}
             >
-              <VStack spacing={3} mb={5}>
+              <VStack spacing={6} mb={5}>
                 <Heading fontSize="60px">Test Start</Heading>
                 <Text fontSize="25px">
-                  Now we&apos;ll move on to the real test!
+                  Now we&apos;ll move on to the rest of the drawings.
                 </Text>
                 <Text fontSize="25px">
                   This time, you won&apos;t see if your answers were right or
                   wrong.
                 </Text>
-                <Text fontSize="25px">When you are ready, click start!</Text>
+                <Text fontSize="25px">
+                  If you aren&apos;t sure, just take your best guess.
+                </Text>
+                <Text fontSize="25px">When you are ready, click Start!</Text>
               </VStack>
             </VideoScreen>
 
