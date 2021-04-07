@@ -134,19 +134,27 @@ const ReactPsych: React.FC = () => {
               buttonText="Next"
               playerProps={{ playing: true }}
             />
-            <TextScreen buttonText="Begin">
+            <VideoScreen
+              url="/drt/instructions/practice_question_instructions.m4a"
+              buttonText="Start"
+              playerProps={{ playing: true }}
+            >
               <VStack spacing={3} mb={5}>
                 <Heading fontSize="60px">Practice Questions</Heading>
                 <Text fontSize="25px">
                   Now you are going to see a series of practice questions.
                 </Text>
-                <Text fontSize="25px">When you are ready, click begin!</Text>
+                <Text fontSize="25px">When you are ready, click start!</Text>
               </VStack>
-            </TextScreen>
+            </VideoScreen>
             {practiceQuestionList.map((q, idx) => {
               return <PracticeSelectImage key={idx} {...q} />
             })}
-            <TextScreen buttonText="Begin">
+            <VideoScreen
+              url="/drt/instructions/test_question_instructions.m4a"
+              buttonText="Start"
+              playerProps={{ playing: true }}
+            >
               <VStack spacing={3} mb={5}>
                 <Heading fontSize="60px">Test Start</Heading>
                 <Text fontSize="25px">
@@ -156,9 +164,9 @@ const ReactPsych: React.FC = () => {
                   This time, you won&apos;t see if your answers were right or
                   wrong.
                 </Text>
-                <Text fontSize="25px">When you are ready, click begin!</Text>
+                <Text fontSize="25px">When you are ready, click start!</Text>
               </VStack>
-            </TextScreen>
+            </VideoScreen>
 
             {questionList.map((q, idx) => {
               return <SelectImage key={idx} {...q} />
