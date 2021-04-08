@@ -43,6 +43,7 @@ export type Query = {
   aggregateUser: AggregateUser;
   bestUser?: Maybe<User>;
   me?: Maybe<User>;
+  healthCheck: Scalars['Boolean'];
 };
 
 

@@ -2,11 +2,6 @@ import { Flex, Heading, Text, VStack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import Layout from '../../components/Layout/Layout'
-import {
-  PostTrialMutation,
-  usePostTrialMutation,
-} from '../../generated/graphql'
-import { createClient } from '../../graphql/createClient'
 import { SelectImage, TextScreen, Timeline } from '../../react-psych'
 import { AudioTestScreen } from '../../react-psych/components/AudioTestScreen'
 import { BeginScreen } from '../../react-psych/components/BeginScreen'
@@ -26,18 +21,18 @@ const practiceQuestionList = createPracticeQuestionList()
 
 const ReactPsych: React.FC = () => {
   const router = useRouter()
-  const rqClient = createClient()
-  const { mutateAsync } = usePostTrialMutation(rqClient)
+  // const rqClient = createClient()
+  // const { mutateAsync } = usePostTrialMutation(rqClient)
 
   const [id, setId] = useState(-1)
-  const [questionNo, setQuestionNo] = useState(1)
+  // const [questionNo, setQuestionNo] = useState(1)
 
   const finish = (): void => {
     router.push('/')
   }
 
   const onNodeFinish = async (data: defaultUserResponse): Promise<void> => {
-    let res: PostTrialMutation
+    // let res: PostTrialMutation
 
     switch (data.type) {
       case 'input':
@@ -63,23 +58,23 @@ const ReactPsych: React.FC = () => {
           throw new Error('id not set')
         }
 
-        res = await mutateAsync({
-          data: {
-            answer: data.response,
-            correct: data.correct,
-            participantId: id,
-            questionId: questionNo,
-            time: data.time,
-            target: data.targetFile,
-            response_1: data.responseFile_1,
-            response_2: data.responseFile_2,
-            response_3: data.responseFile_3,
-            response_4: data.responseFile_4,
-          },
-        })
+        // res = await mutateAsync({
+        //   data: {
+        //     answer: data.response,
+        //     correct: data.correct,
+        //     participantId: id,
+        //     questionId: questionNo,
+        //     time: data.time,
+        //     target: data.targetFile,
+        //     response_1: data.responseFile_1,
+        //     response_2: data.responseFile_2,
+        //     response_3: data.responseFile_3,
+        //     response_4: data.responseFile_4,
+        //   },
+        // })
 
-        console.log(res)
-        setQuestionNo((prevNo) => prevNo + 1)
+        // console.log(res)
+        // setQuestionNo((prevNo) => prevNo + 1)
         return
       case 'practice':
       case 'instruction':
