@@ -235,7 +235,6 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
     }
   }, [show])
 
-  // Gives time before telling user to select an option
 
   // delay for showing cross and then question
   useEffect(() => {

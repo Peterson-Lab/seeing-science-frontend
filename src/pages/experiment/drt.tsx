@@ -152,7 +152,6 @@ const ReactPsych: React.FC = () => {
               playerProps={{ playing: true }}
             >
               <VStack spacing={6} mb={5}>
-                <Heading fontSize="60px">Test Start</Heading>
                 <Text fontSize="25px">
                   Now we&apos;ll move on to the rest of the drawings.
                 </Text>
