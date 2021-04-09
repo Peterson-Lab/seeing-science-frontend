@@ -235,7 +235,6 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
     }
   }, [show])
 
-
   // delay for showing cross and then question
   useEffect(() => {
     const waitShow = async (): Promise<void> => {
