@@ -645,7 +645,7 @@
     "@chakra-ui/utils" "1.5.1"
     compute-scroll-into-view "1.0.14"
     copy-to-clipboard "3.3.1"
-    
+
 "@chakra-ui/icon@1.1.5":
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/@chakra-ui/icon/-/icon-1.1.5.tgz#f37abe47fd176a4c291d2037df2d6ed480622c09"
@@ -1027,7 +1027,8 @@
     "@types/object-assign" "4.0.30"
     css-box-model "1.2.1"
     lodash.mergewith "4.6.2"
-"@chakra-ui/utils@1.5.1":
+
+"@chakra-ui/utils@1.5.1", "@chakra-ui/utils@^1.5.1":
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@chakra-ui/utils/-/utils-1.5.1.tgz#a01fd14f6d948a13c2644cfa844f410299135ffc"
   integrity sha512-J8P9wA96Kaxu4oHh+8s1rEL2VABWK/io8sBck19eOXKfVXJ55KyVwGZTrsVID0No43b7WzJx6n/xsMKkn39Peg==
@@ -1035,7 +1036,7 @@
     "@types/lodash.mergewith" "4.6.6"
     css-box-model "1.2.1"
     lodash.mergewith "4.6.2"
-  
+
 "@chakra-ui/visually-hidden@1.0.8":
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@chakra-ui/visually-hidden/-/visually-hidden-1.0.8.tgz#aa4ec1cdec99437f11527af24b3f44b7b0fe7b8f"
@@ -1847,19 +1848,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^17.0.0":
+"@types/react@*", "@types/react@^17.0.0", "@types/react@^17.0.3":
   version "17.0.3"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.3.tgz#ba6e215368501ac3826951eef2904574c262cc79"
   integrity sha512-wYOUxIgs2HZZ0ACNiIayItyluADNbONl7kt8lkLjVK8IitMH5QMyAh75Fwhmo37r1m7L2JaFj03sIfxBVDvRAg==
-  dependencies:
-    "@types/prop-types" "*"
-    "@types/scheduler" "*"
-    csstype "^3.0.2"
-
-"@types/react@^16.9.46":
-  version "16.14.5"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.14.5.tgz#2c39b5cadefaf4829818f9219e5e093325979f4d"
-  integrity sha512-YRRv9DNZhaVTVRh9Wmmit7Y0UFhEVqXqCSw3uazRWMxa2x85hWQZ5BN24i7GXZbaclaLXEcodEeIHsjBA8eAMw==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
