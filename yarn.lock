@@ -645,7 +645,7 @@
     "@chakra-ui/utils" "1.5.1"
     compute-scroll-into-view "1.0.14"
     copy-to-clipboard "3.3.1"
-    
+
 "@chakra-ui/icon@1.1.5":
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/@chakra-ui/icon/-/icon-1.1.5.tgz#f37abe47fd176a4c291d2037df2d6ed480622c09"
@@ -960,15 +960,6 @@
     "@chakra-ui/form-control" "1.3.1"
     "@chakra-ui/utils" "1.5.1"
 
-"@chakra-ui/theme-tools@1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@chakra-ui/theme-tools/-/theme-tools-1.1.1.tgz#c5e2fda87fb9602f637ea8360e4084503faa4f2c"
-  integrity sha512-ECW8IF0DxMxQgwgn4SPKPbHXhp1fnz50WtInNTvyXHvFZSst0ANn8k+WRAMb9qXolzuZw0sFjhd8U59rtIIpwA==
-  dependencies:
-    "@chakra-ui/utils" "1.4.0"
-    "@types/tinycolor2" "1.4.2"
-    tinycolor2 "1.4.2"
-
 "@chakra-ui/theme-tools@1.1.3":
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@chakra-ui/theme-tools/-/theme-tools-1.1.3.tgz#16b1404d530eca7c51f2ccb57d0bb33c81d0501d"
@@ -1018,16 +1009,7 @@
     "@chakra-ui/hooks" "1.3.1"
     "@chakra-ui/utils" "1.5.1"
 
-"@chakra-ui/utils@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@chakra-ui/utils/-/utils-1.4.0.tgz#4b20c522141d68dc62b5c7be929bb6d1596db190"
-  integrity sha512-ND7NIilpncnkzcNBnAySGBFpOXb3urO1X9esSY0+M5zXiq+VSSfK9JuoJd3ilvV4Dbwgzil7hMAELBuHme4uTg==
-  dependencies:
-    "@types/lodash.mergewith" "4.6.6"
-    "@types/object-assign" "4.0.30"
-    css-box-model "1.2.1"
-    lodash.mergewith "4.6.2"
-"@chakra-ui/utils@1.5.1":
+"@chakra-ui/utils@1.5.1", "@chakra-ui/utils@^1.5.1":
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@chakra-ui/utils/-/utils-1.5.1.tgz#a01fd14f6d948a13c2644cfa844f410299135ffc"
   integrity sha512-J8P9wA96Kaxu4oHh+8s1rEL2VABWK/io8sBck19eOXKfVXJ55KyVwGZTrsVID0No43b7WzJx6n/xsMKkn39Peg==
@@ -1035,7 +1017,7 @@
     "@types/lodash.mergewith" "4.6.6"
     css-box-model "1.2.1"
     lodash.mergewith "4.6.2"
-  
+
 "@chakra-ui/visually-hidden@1.0.8":
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@chakra-ui/visually-hidden/-/visually-hidden-1.0.8.tgz#aa4ec1cdec99437f11527af24b3f44b7b0fe7b8f"
@@ -1817,11 +1799,6 @@
   version "14.14.37"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.37.tgz#a3dd8da4eb84a996c36e331df98d82abd76b516e"
   integrity sha512-XYmBiy+ohOR4Lh5jE379fV2IU+6Jn4g5qASinhitfyO71b/sCo6MKsMLF5tc7Zf2CE8hViVQyYSobJNke8OvUw==
-
-"@types/object-assign@4.0.30":
-  version "4.0.30"
-  resolved "https://registry.yarnpkg.com/@types/object-assign/-/object-assign-4.0.30.tgz#8949371d5a99f4381ee0f1df0a9b7a187e07e652"
-  integrity sha1-iUk3HVqZ9Dge4PHfCpt6GH4H5lI=
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
