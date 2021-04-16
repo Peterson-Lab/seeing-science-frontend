@@ -75,7 +75,7 @@ export const NumberInputScreen: React.FC<NumberInputScreen> = ({
                   required: true,
                   name: 'num',
                   validateAsNumber: true,
-                }) as undefined
+                }) as unknown as undefined
               }
               size="lg"
               w="20vw"
