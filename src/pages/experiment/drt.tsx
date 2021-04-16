@@ -144,7 +144,7 @@ const ReactPsych: React.FC = () => {
               </Text>
             </MultipleVideoScreen>
             <VideoScreen
-              url="/drt/instructions/practice_question_instructions.m4a"
+              url="/drt/instructions/practice_question_instructions.mp3"
               buttonText="Start"
               playerProps={{ playing: true }}
             >
@@ -158,7 +158,7 @@ const ReactPsych: React.FC = () => {
               return <PracticeSelectImage key={idx} {...q} />
             })}
             <VideoScreen
-              url="/drt/instructions/test_question_instructions.m4a"
+              url="/drt/instructions/test_question_instructions.mp3"
               buttonText="Start"
               playerProps={{ playing: true }}
             >

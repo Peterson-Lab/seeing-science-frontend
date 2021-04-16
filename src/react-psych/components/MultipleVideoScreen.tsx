@@ -21,6 +21,7 @@ export const MultipleVideoScreen: React.FC<MultipleVideoScreen> = ({
 }) => {
   const [currentVideo, setCurrentVideo] = useState(0)
   const [showButtons, setShowButtons] = useState(false)
+  const [hasBacked, setHasBacked] = useState(false)
 
   if (!timeline) {
     throw new TimelineNodeError()
@@ -40,9 +41,13 @@ export const MultipleVideoScreen: React.FC<MultipleVideoScreen> = ({
       })
       return
     }
-
-    setShowButtons(false)
+    if(!hasBacked) setShowButtons(false)
     setCurrentVideo((vid) => (vid += 1))
+  }
+
+  const handleBack = ():void => {
+    setHasBacked(true)
+    setCurrentVideo((vid) => (vid -= 1))
   }
 
   if (!timeline.isActive) {
@@ -72,7 +77,7 @@ export const MultipleVideoScreen: React.FC<MultipleVideoScreen> = ({
               size="lg"
               fontSize="20px"
               fontWeight="600"
-              onClick={() => setCurrentVideo((vid) => (vid -= 1))}
+              onClick={() => handleBack()}
             >
               Back
             </Button>

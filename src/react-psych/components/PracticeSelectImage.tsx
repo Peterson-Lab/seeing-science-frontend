@@ -314,7 +314,7 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
   const incorrectFeedback = (
     <>
       <ReactPlayer
-        url="/drt/instructions/feedback_incorrect.m4a"
+        url="/drt/instructions/feedback_incorrect.mp3"
         playing={true}
         volume={100}
         height="0px"
@@ -359,7 +359,7 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
   const correctFeedback = (
     <>
       <ReactPlayer
-        url="/drt/instructions/feedback_correct.m4a"
+        url="/drt/instructions/feedback_correct.mp3"
         playing={true}
         volume={100}
         height="0px"
