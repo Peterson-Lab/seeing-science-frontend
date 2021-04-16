@@ -24,7 +24,7 @@ export const BeginScreen: React.FC<BeginScreen> = ({
   const responseStart = useResponseStart(timeline.isActive)
 
   useEffect(() => {
-    if (timeline.fullscreen) {
+    if (!timeline.fullscreen) {
       setShownText('Click here to go fullscreen')
     }
   }, [timeline.fullscreen])

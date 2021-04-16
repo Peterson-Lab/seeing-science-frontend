@@ -27,6 +27,14 @@ export const Timeline: React.FC<TimelineProps> = ({
   const timelineNodeFinish = async (
     nodeData: defaultUserResponse
   ): Promise<void> => {
+    if(nodeData.type == 'resize')
+    {
+      if (typeof nodeData.response != 'number') {
+        throw new Error('input response invalid')
+      }
+      setRatio(nodeData.response);
+    }
+
     await sendNodeData(nodeData)
 
     if (activeNode < nodeCount - 1) {
@@ -40,6 +48,8 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   const screen = useFullScreenHandle()
 
+  const [ratio, setRatio] = useState(100);
+
   const childrenWithProps = React.Children.map(
     Wrapper({ children }),
     (child, index) => {
@@ -48,6 +58,7 @@ export const Timeline: React.FC<TimelineProps> = ({
         index,
         isActive: index === activeNode,
         fullscreen: screen,
+        ratio,
       }
 
       return React.cloneElement(child, {

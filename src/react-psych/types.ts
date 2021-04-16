@@ -26,7 +26,7 @@ export type experimentElement = 'question' | 'finish' | 'intro' | null
 export type questionState = 'prompt' | 'responses' | null
 
 export type defaultUserResponse = {
-  type: 'input' | 'question' | 'practice' | 'instruction'
+  type: 'input' | 'question' | 'practice' | 'instruction' | 'resize'
   node: number
   response: number | string | null
   correct: boolean | null
@@ -43,4 +43,5 @@ export type TimelineNodeProps = {
   isActive: boolean
   index: number
   fullscreen: FullScreenHandle | null
+  ratio: number
 }

@@ -8,6 +8,7 @@ import { BeginScreen } from '../../react-psych/components/BeginScreen'
 import { MultipleVideoScreen } from '../../react-psych/components/MultipleVideoScreen'
 import { NumberInputScreen } from '../../react-psych/components/NumberInputScreen'
 import { PracticeSelectImage } from '../../react-psych/components/PracticeSelectImage'
+import { ResizeScreen } from '../../react-psych/components/ResizeScreen'
 import { VideoScreen } from '../../react-psych/components/VideoScreen'
 import {
   createPracticeQuestionList,
@@ -76,6 +77,7 @@ const ReactPsych: React.FC = () => {
         // console.log(res)
         // setQuestionNo((prevNo) => prevNo + 1)
         return
+      case 'resize':
       case 'practice':
       case 'instruction':
       default:
@@ -108,6 +110,15 @@ const ReactPsych: React.FC = () => {
             >
               <Heading>Enter your Participant ID</Heading>
             </NumberInputScreen>
+            <ResizeScreen buttonText="Next">
+              <Heading fontSize="60px">Image Calibration</Heading>
+              <Text px={60} fontSize="25px">
+                Take a credit card and line it up with the top left corner of your screen. Click on the bottom right corner of the credit card, so the green box matches it.
+              </Text>
+              <Text px={60} fontSize="25px">
+                Once you have it matched, press Enter on your keyboard to lock it in, and then press Next.
+              </Text>
+            </ResizeScreen>
             <AudioTestScreen
               buttonText="Yes"
               url="/drt/instructions/audio_test.mp3"
