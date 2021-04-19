@@ -197,7 +197,7 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
   if (!timeline) {
     throw new TimelineNodeError()
   }
-  const ratio = timeline.ratio;
+  const ratio = timeline.ratio
 
   const handleClick = (idx: number): void => {
     setElementClicked(idx)
@@ -265,7 +265,7 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
   const question = (
     <>
       <NextChakraImage
-        height={300 *  ratio}
+        height={300 * ratio}
         width={300 * ratio}
         src={stimulus}
         quality={100}
@@ -316,7 +316,7 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
       <ReactPlayer
         url="/drt/instructions/feedback_incorrect.mp3"
         playing={true}
-        volume={100}
+        volume={1}
         height="0px"
         onEnded={() => setShowButton(true)}
       />
@@ -361,7 +361,7 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
       <ReactPlayer
         url="/drt/instructions/feedback_correct.mp3"
         playing={true}
-        volume={100}
+        volume={1}
         height="0px"
         onEnded={() => setShowButton(true)}
       />
