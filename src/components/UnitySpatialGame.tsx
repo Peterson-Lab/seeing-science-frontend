@@ -11,8 +11,8 @@ const UnitySpatialGame: React.FC<UnitySpatialGameProps> = ({}) => {
   )
 
   return (
-    <Center>
-      <Unity width="960px" height="600px" unityContent={unityContent} />
+    <Center height="80%" width="80%">
+      <Unity width="100%" height="100%" unityContent={unityContent} />
     </Center>
   )
 }
