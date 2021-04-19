@@ -55,7 +55,7 @@ const ReactPsych: React.FC = () => {
         ) {
           throw new Error('data invalid')
         }
-        if (id <= 0) {
+        if (id < 0) {
           throw new Error('id not set')
         }
 
@@ -113,10 +113,13 @@ const ReactPsych: React.FC = () => {
             <ResizeScreen buttonText="Next">
               <Heading fontSize="60px">Image Calibration</Heading>
               <Text px={60} fontSize="25px">
-                Take a credit card and line it up with the top left corner of your screen. Click on the bottom right corner of the credit card, so the green box matches it.
+                Take a credit card and line it up with the top left corner of
+                your screen. Click on the bottom right corner of the credit
+                card, so the green box matches it.
               </Text>
               <Text px={60} fontSize="25px">
-                Once you have it matched, press Enter on your keyboard to lock it in, and then press Next.
+                Once you have it matched, press Enter on your keyboard to lock
+                it in, and then press Next.
               </Text>
             </ResizeScreen>
             <AudioTestScreen
