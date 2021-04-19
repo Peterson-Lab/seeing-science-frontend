@@ -35,7 +35,8 @@
     "react-keyboard-hooks": "^1.2.3",
     "react-player": "^2.9.0",
     "react-query": "^3.13.8",
-    "react-select": "^4.3.0"
+    "react-select": "^4.3.0",
+    "react-unity-webgl": "^7.x"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.20.0",
