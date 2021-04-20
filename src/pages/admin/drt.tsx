@@ -96,6 +96,8 @@ const DrtAdmin: React.FC = () => {
     return <AdminLayout>Loading...</AdminLayout>
   }
 
+  const filename = 'drt_' + format(new Date(), 'yMMdd_HHmm') + '.csv'
+
   return (
     <AdminLayout>
       <VStack mt={3} spacing={3}>
@@ -104,7 +106,7 @@ const DrtAdmin: React.FC = () => {
           <Spacer />
           <HStack>
             {csvData ? (
-              <CSVLink filename="drt.csv" data={csvData}>
+              <CSVLink filename={filename} data={csvData}>
                 <Button>Download CSV</Button>
               </CSVLink>
             ) : null}
