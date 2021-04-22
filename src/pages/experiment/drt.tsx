@@ -1,8 +1,7 @@
 import { Flex, Heading, Text, VStack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React from 'react'
 import Layout from '../../components/Layout/Layout'
-import { usePostTrialMutation } from '../../generated/graphql'
 import { createClient } from '../../graphql/createClient'
 import { SelectImage, TextScreen, Timeline } from '../../react-psych'
 import { AudioTestScreen } from '../../react-psych/components/AudioTestScreen'
@@ -16,8 +15,7 @@ import {
   createPracticeQuestionList,
   createTestQuestionList,
 } from '../../react-psych/questionList'
-import { defaultUserResponse } from '../../react-psych/types'
-import { __prod__ } from '../../utils/constants'
+import { useTimelineNodeFinish } from '../../utils/onTimelineNodeFinish'
 
 const questionList = createTestQuestionList()
 
@@ -26,73 +24,12 @@ const practiceQuestionList = createPracticeQuestionList()
 const ReactPsych: React.FC = () => {
   const router = useRouter()
   const rqClient = createClient()
-  const { mutateAsync } = usePostTrialMutation(rqClient)
 
-  const [id, setId] = useState(-1)
-  const [questionNo, setQuestionNo] = useState(1)
+  const [onNodeFinish, setId] = useTimelineNodeFinish(rqClient)
 
   const finish = (): void => {
     router.push('/')
   }
-
-  const onNodeFinish = async (data: defaultUserResponse): Promise<void> => {
-    // let res: PostTrialMutation
-
-    switch (data.type) {
-      case 'input':
-        if (typeof data.response != 'number') {
-          throw new Error('input response invalid')
-        }
-        setId(data.response)
-        return
-      case 'question':
-        if (
-          typeof data.response != 'number' ||
-          typeof data.correct != 'boolean' ||
-          typeof data.time != 'number' ||
-          typeof data.targetFile != 'string' ||
-          typeof data.responseFile_1 != 'string' ||
-          typeof data.responseFile_2 != 'string' ||
-          typeof data.responseFile_3 != 'string' ||
-          typeof data.responseFile_4 != 'string'
-        ) {
-          throw new Error('data invalid')
-        }
-        if (id < 0) {
-          throw new Error('id not set')
-        }
-        if (__prod__) {
-          await mutateAsync({
-            data: {
-              answer: data.response,
-              correct: data.correct,
-              participantId: id,
-              questionId: questionNo,
-              time: data.time,
-              target: data.targetFile,
-              response_1: data.responseFile_1,
-              response_2: data.responseFile_2,
-              response_3: data.responseFile_3,
-              response_4: data.responseFile_4,
-            },
-          })
-        } else {
-          console.log(data)
-        }
-        setQuestionNo((prevNo) => prevNo + 1)
-
-        return
-      case 'resize':
-      case 'practice':
-      case 'instruction':
-      default:
-        return
-    }
-  }
-
-  // useEffect(() => {
-  //   cacheImages(['/exp/drt/danny.png'])
-  // }, [])
 
   return (
     <Layout>
@@ -118,13 +55,14 @@ const ReactPsych: React.FC = () => {
             <ResizeScreen buttonText="Next">
               <Heading fontSize="60px">Image Calibration</Heading>
               <Text px={60} fontSize="25px">
-                Take a credit card and line it up with the top left corner of
-                your screen. Click on the bottom right corner of the credit
-                card, so the green box matches it.
+                Please take a credit card and line it up with the top left
+                corner of your screen. Then adjust the size of the green box so
+                that it matches the size of your credit card. Click inside the
+                green box to make it smaller, click outside the box to make it
+                bigger.
               </Text>
               <Text px={60} fontSize="25px">
-                Once you have it matched, press Enter on your keyboard to lock
-                it in, and then press Next.
+                Once you have it matched, press ENTER on your keyboard.
               </Text>
             </ResizeScreen>
             <AudioTestScreen
