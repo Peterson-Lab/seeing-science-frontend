@@ -70,13 +70,7 @@ export const NumberInputScreen: React.FC<NumberInputScreen> = ({
             <NumberInput
               label={fieldLabel}
               type="number"
-              ref={
-                register({
-                  required: true,
-                  name: 'num',
-                  validateAsNumber: true,
-                }) as unknown as undefined
-              }
+              {...register('num', { required: true, valueAsNumber: true })}
               size="lg"
               w="20vw"
               onChange={(valueString) => setValue('num', valueString)}

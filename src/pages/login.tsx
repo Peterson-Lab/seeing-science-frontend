@@ -24,7 +24,13 @@ const Login: React.FC = () => {
       queryClient.invalidateQueries('Me')
     },
   })
-  const { register, handleSubmit, errors, formState, setError } = useForm()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    formState,
+    setError,
+  } = useForm()
   const onSubmit = async (input: LoginInput): Promise<void> => {
     const response = await mutateAsync({ input })
     console.log(response)
@@ -47,10 +53,9 @@ const Login: React.FC = () => {
             <FormControl isInvalid={!!errors?.username?.message}>
               <FormLabel>Username or Email</FormLabel>
               <Input
-                name="usernameOrEmail"
                 placeholder="username or email"
                 label="Username or Email"
-                ref={register({ required: true })}
+                {...register('usernameOrEmail', { required: true })}
               ></Input>
               <FormErrorMessage>
                 {errors.username && errors.username.message}
@@ -61,11 +66,10 @@ const Login: React.FC = () => {
             <FormControl isInvalid={!!errors?.password?.message}>
               <FormLabel>Password</FormLabel>
               <Input
-                name="password"
                 placeholder="password"
                 label="Password"
                 type="password"
-                ref={register({ required: true })}
+                {...register('password', { required: true })}
               ></Input>
               <FormErrorMessage>
                 {errors.password && errors.password.message}

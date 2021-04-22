@@ -18,7 +18,13 @@ const Register: React.FC = () => {
   const router = useRouter()
   const rqClient = createClient()
   const { mutateAsync } = useRegisterMutation(rqClient)
-  const { register, handleSubmit, errors, formState, setError } = useForm()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    formState,
+    setError,
+  } = useForm()
   const onSubmit = async (input: RegisterInput): Promise<void> => {
     const response = await mutateAsync({ input })
     if (response.register.errors) {
@@ -40,10 +46,9 @@ const Register: React.FC = () => {
             <FormControl isInvalid={!!errors?.username?.message}>
               <FormLabel>Username</FormLabel>
               <Input
-                name="username"
                 placeholder="username"
                 label="Username"
-                ref={register({ required: true })}
+                {...register('username', { required: true })}
               ></Input>
               <FormErrorMessage>
                 {errors.username && errors.username.message}
@@ -54,10 +59,9 @@ const Register: React.FC = () => {
             <FormControl isInvalid={!!errors?.email?.message}>
               <FormLabel>Email</FormLabel>
               <Input
-                name="email"
                 placeholder="email"
                 label="Email"
-                ref={register({ required: true })}
+                {...register('email', { required: true })}
               ></Input>
               <FormErrorMessage>
                 {errors.email && errors.email.message}
@@ -68,11 +72,10 @@ const Register: React.FC = () => {
             <FormControl isInvalid={!!errors?.password?.message}>
               <FormLabel>Password</FormLabel>
               <Input
-                name="password"
                 placeholder="password"
                 label="Password"
                 type="password"
-                ref={register({ required: true })}
+                {...register('password', { required: true })}
               ></Input>
               <FormErrorMessage>
                 {errors.password && errors.password.message}

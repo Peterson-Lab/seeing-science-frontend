@@ -20,7 +20,13 @@ interface FormData {
 }
 
 const SpatialForm: React.FC = () => {
-  const { register, handleSubmit, control, setError, errors } = useForm({
+  const {
+    register,
+    handleSubmit,
+    control,
+    setError,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       ans: [{ answer: '' }],
     },
@@ -54,9 +60,11 @@ const SpatialForm: React.FC = () => {
             <HStack key={item.id}>
               <FormControl isInvalid={!!errors.ans}>
                 <Textarea
-                  name={`ans[${index}].answer`}
-                  ref={register({ required: true, minLength: 5 })}
-                  defaultValue={item.value}
+                  {...register(`ans.${index}.answer` as const, {
+                    required: true,
+                    minLength: 5,
+                  })}
+                  defaultValue={item.answer}
                   size="lg"
                   w="50vw"
                 />

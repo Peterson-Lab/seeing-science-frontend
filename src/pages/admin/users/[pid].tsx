@@ -49,8 +49,7 @@ const UserEdit: React.FC = () => {
             <Text>Email: {data.findFirstUser.email}</Text>
             <Text>Username: {data.findFirstUser.username}</Text>
             <Select
-              name="role"
-              ref={register()}
+              {...register('role')}
               defaultValue={data.findFirstUser.role}
             >
               <option value="USER">User</option>
