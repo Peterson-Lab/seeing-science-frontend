@@ -19,7 +19,7 @@
     "@sentry/node": "^6.2.5",
     "@sentry/webpack-plugin": "^1.14.2",
     "date-fns": "^2.21.0",
-    "framer-motion": "^4.0.0",
+    "framer-motion": "^4.1.5",
     "graphql": "^15.4.0",
     "graphql-request": "^3.4.0",
     "jspsych-react": "^0.3.0",
