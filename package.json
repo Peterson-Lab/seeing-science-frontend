@@ -31,7 +31,7 @@
     "react-dom": "^17.0.2",
     "react-full-screen": "1.0.1",
     "react-hook-form": "7.2.3",
-    "react-hotkeys-hook": "^3.0.3",
+    "react-hotkeys-hook": "^3.3.1",
     "react-keyboard-hooks": "^1.2.3",
     "react-player": "^2.9.0",
     "react-query": "^3.13.10",
