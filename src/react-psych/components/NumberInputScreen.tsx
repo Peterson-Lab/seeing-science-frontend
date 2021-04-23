@@ -31,7 +31,13 @@ export const NumberInputScreen: React.FC<NumberInputScreen> = ({
   fieldPlaceholder,
   setNumber,
 }) => {
-  const { register, handleSubmit, setValue, setError } = useForm()
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    setError,
+  } = useForm<NumberFormData>()
+
   if (!timeline) {
     throw new TimelineNodeError()
   }
