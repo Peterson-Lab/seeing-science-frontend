@@ -1,6 +1,7 @@
 import { Flex } from '@chakra-ui/react'
 import React, { ReactChild, ReactChildren, ReactNode, useState } from 'react'
 import { FullScreen, useFullScreenHandle } from 'react-full-screen'
+import { useHotkeys } from 'react-hotkeys-hook'
 import { defaultUserResponse, TimelineNodeProps } from '../types'
 
 export interface TimelineProps {
@@ -22,23 +23,27 @@ export const Timeline: React.FC<TimelineProps> = ({
 }) => {
   const [activeNode, setActiveNode] = useState(0)
 
+  useHotkeys('ctrl+l', () => {
+    setActiveNode((prev) => prev + 1)
+    return
+  })
+
   const nodeCount = React.Children.count(children)
 
   const timelineNodeFinish = async (
     nodeData: defaultUserResponse
   ): Promise<void> => {
-    if(nodeData.type == 'resize')
-    {
+    if (nodeData.type == 'resize') {
       if (typeof nodeData.response != 'number') {
         throw new Error('input response invalid')
       }
-      setRatio(nodeData.response);
+      setRatio(nodeData.response)
     }
 
     await sendNodeData(nodeData)
 
     if (activeNode < nodeCount - 1) {
-      setActiveNode(activeNode + 1)
+      setActiveNode((prev) => prev + 1)
     }
     if (activeNode === nodeCount - 1) {
       onFinish()
@@ -48,7 +53,7 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   const screen = useFullScreenHandle()
 
-  const [ratio, setRatio] = useState(100);
+  const [ratio, setRatio] = useState(100)
 
   const childrenWithProps = React.Children.map(
     Wrapper({ children }),

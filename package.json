@@ -32,6 +32,7 @@
     "react-full-screen": "1.0.2",
     "react-hook-form": "7.3.4",
     "react-hotkeys-hook": "^3.3.1",
+    "react-icons": "^4.2.0",
     "react-keyboard-hooks": "^1.2.3",
     "react-player": "^2.9.0",
     "react-query": "^3.13.12",

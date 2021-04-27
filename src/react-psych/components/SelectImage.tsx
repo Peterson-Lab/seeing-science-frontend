@@ -111,6 +111,7 @@ export const SelectImage: React.FC<SelectImageProps> = ({
             <Link
               // bgColor="gray.200"
               borderWidth="3px"
+              v
               borderRadius="lg"
               p={2}
               _hover={{ boxShadow: 'outline' }}

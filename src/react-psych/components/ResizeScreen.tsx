@@ -15,42 +15,36 @@ export const ResizeScreen: React.FC<ResizeScreen> = ({
   timeline,
   buttonText,
 }) => {
+  // const ratio = 3.37 / 2.125;
 
-    // const ratio = 3.37 / 2.125;
+  const [width, setWidth] = useState(337)
+  const [height, setHeight] = useState(213)
+  const [showButton, setShowButton] = useState(false)
 
-    const [width, setWidth] = useState(337);
-    const [height, setHeight] = useState(213);
-    const [showButton, setShowButton] = useState(false);
+  if (!timeline) {
+    throw new TimelineNodeError()
+  }
 
-    if (!timeline) {
-        throw new TimelineNodeError()
-      }
+  const mouseDownEvent = (e: MouseEvent) => {
+    e.preventDefault()
 
+    setWidth(e.pageX)
+    setHeight(Math.round(e.pageX * 0.632))
+  }
 
-
-    const mouseDownEvent = (e: MouseEvent) => {
-        e.preventDefault();
-
-        setWidth(e.pageX);
-        setHeight(Math.round(e.pageX * 0.632));
-
+  const keyDownEvent = (e: KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      window.removeEventListener('mousedown', mouseDownEvent)
+      setShowButton(true)
     }
+  }
 
-    const keyDownEvent = (e: KeyboardEvent) => {
-        if(e.key === 'Enter') {
-            window.removeEventListener('mousedown', mouseDownEvent);
-            setShowButton(true);
-        }
+  useEffect(() => {
+    if (timeline.isActive) {
+      window.addEventListener('mousedown', mouseDownEvent)
+      window.addEventListener('keydown', keyDownEvent)
     }
-
-    useEffect(() => {
-        if(timeline.isActive) {
-        window.addEventListener('mousedown', mouseDownEvent);
-        window.addEventListener('keydown', keyDownEvent);
-        }
-    }, [timeline.isActive])
-
-
+  }, [timeline.isActive])
 
   if (!timeline) {
     throw new TimelineNodeError()
@@ -60,7 +54,10 @@ export const ResizeScreen: React.FC<ResizeScreen> = ({
 
   const handleResponse = (): void => {
     const responseTime = getResponseTime(responseStart)
-    const ratio = width / 337;
+    const ratio = width / 337
+    window.removeEventListener('mousedown', mouseDownEvent)
+    window.removeEventListener('keydown', keyDownEvent)
+
     timeline.onFinish({
       type: 'resize',
       node: timeline.index,
@@ -76,7 +73,14 @@ export const ResizeScreen: React.FC<ResizeScreen> = ({
 
   return (
     <VStack>
-        <Box background="green" width={width} height={height} position='absolute' left={0} top={0}></Box>
+      <Box
+        background="green"
+        width={width}
+        height={height}
+        position="absolute"
+        left={0}
+        top={0}
+      ></Box>
       {children}
       <Button
         colorScheme="blue"
