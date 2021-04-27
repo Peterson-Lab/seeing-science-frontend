@@ -43,144 +43,6 @@ const createBody = (
   }
 }
 
-const correctItem = (response: ImageResponse, idx: number): JSX.Element => (
-  <Link
-    // bgColor="gray.200"
-    borderWidth="3px"
-    borderRadius="lg"
-    p={2}
-    // _hover={{ boxShadow: 'outline' }}
-    // boxShadow={elementClicked === idx ? 'outline' : undefined}
-    outline="solid 5px green"
-    key={idx}
-  >
-    <VStack spacing={4} p={4}>
-      <NextChakraImage
-        height="70mm"
-        width="50mm"
-        src={response.answerImage}
-        quality={100}
-        loading="eager"
-        priority={true}
-        objectPosition=""
-      />
-      <Text fontSize="8mm" fontWeight="600">
-        {idx + 1}
-      </Text>
-    </VStack>
-  </Link>
-)
-
-const createIncorrectFeedbackResponses = (
-  responses: ImageResponse[],
-  correct: number,
-  elementClicked: number
-): JSX.Element => {
-  const incorrectItem = (response: ImageResponse, idx: number): JSX.Element => (
-    <Link
-      // bgColor="gray.200"
-      borderWidth="3px"
-      borderRadius="lg"
-      p={2}
-      // _hover={{ boxShadow: 'outline' }}
-      // boxShadow={elementClicked === idx ? 'outline' : undefined}
-      outline="solid 5px red"
-      key={idx}
-    >
-      <VStack spacing={4} p={4}>
-        <NextChakraImage
-          height="70mm"
-          width="50mm"
-          src={response.answerImage}
-          quality={100}
-          loading="eager"
-          priority={true}
-          objectPosition=""
-        />
-        <Text fontSize="8mm" fontWeight="600">
-          {idx + 1}
-        </Text>
-      </VStack>
-    </Link>
-  )
-
-  return (
-    <>
-      {responses.map((response, idx) => {
-        if (idx === correct - 1) return correctItem(response, idx)
-        if (idx === elementClicked) return incorrectItem(response, idx)
-        return (
-          <Link
-            // bgColor="gray.200"
-            borderWidth="3px"
-            borderRadius="lg"
-            p={2}
-            // _hover={{ boxShadow: 'outline' }}
-            // boxShadow={elementClicked === idx ? 'outline' : undefined}
-            // outline={idx === correct - 1 ? 'solid'}
-            key={idx}
-          >
-            <VStack spacing={4} p={4}>
-              <NextChakraImage
-                height="70mm"
-                width="50mm"
-                src={response.answerImage}
-                quality={100}
-                loading="eager"
-                priority={true}
-                objectPosition=""
-              />
-              <Text fontSize="8mm" fontWeight="600">
-                {idx + 1}
-              </Text>
-            </VStack>
-          </Link>
-        )
-      })}
-    </>
-  )
-}
-
-const createCorrectFeedbackResponses = (
-  responses: ImageResponse[],
-  correct: number
-): JSX.Element => {
-  return (
-    <>
-      {responses.map((response, idx) => {
-        if (idx === correct - 1) return correctItem(response, idx)
-        return (
-          <Link
-            // bgColor="gray.200"
-            borderWidth="3px"
-            borderRadius="lg"
-            p={2}
-            // _hover={{ boxShadow: 'outline' }}
-            // boxShadow={elementClicked === idx ? 'outline' : undefined}
-            // outline={idx === correct - 1 ? 'solid'}
-            key={idx}
-          >
-            <VStack spacing={4} p={4}>
-              <NextChakraImage
-                height="70mm"
-                width="50mm"
-                src={response.answerImage}
-                quality={100}
-                loading="eager"
-                priority={true}
-                objectPosition=""
-              />
-              <Text fontSize="8mm" fontWeight="600">
-                {idx + 1}
-              </Text>
-            </VStack>
-          </Link>
-        )
-      })}
-    </>
-  )
-}
-
 export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
   stimulus,
   responses,
@@ -198,6 +60,147 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
     throw new TimelineNodeError()
   }
   const ratio = timeline.ratio
+
+  const correctItem = (response: ImageResponse, idx: number): JSX.Element => (
+    <Link
+      // bgColor="gray.200"
+      borderWidth="3px"
+      borderRadius="lg"
+      p={2}
+      // _hover={{ boxShadow: 'outline' }}
+      // boxShadow={elementClicked === idx ? 'outline' : undefined}
+      outline="solid 5px green"
+      key={idx}
+    >
+      <VStack spacing={4} p={4}>
+        <NextChakraImage
+          height={200 * ratio}
+          width={150 * ratio}
+          src={response.answerImage}
+          quality={100}
+          loading="eager"
+          priority={true}
+          objectPosition=""
+        />
+        <Text fontSize="8mm" fontWeight="600">
+          {idx + 1}
+        </Text>
+      </VStack>
+    </Link>
+  )
+
+  const createIncorrectFeedbackResponses = (
+    responses: ImageResponse[],
+    correct: number,
+    elementClicked: number
+  ): JSX.Element => {
+    const incorrectItem = (
+      response: ImageResponse,
+      idx: number
+    ): JSX.Element => (
+      <Link
+        // bgColor="gray.200"
+        borderWidth="3px"
+        borderRadius="lg"
+        p={2}
+        // _hover={{ boxShadow: 'outline' }}
+        // boxShadow={elementClicked === idx ? 'outline' : undefined}
+        outline="solid 5px red"
+        key={idx}
+      >
+        <VStack spacing={4} p={4}>
+          <NextChakraImage
+            height={200 * ratio}
+            width={150 * ratio}
+            src={response.answerImage}
+            quality={100}
+            loading="eager"
+            priority={true}
+            objectPosition=""
+          />
+          <Text fontSize="8mm" fontWeight="600">
+            {idx + 1}
+          </Text>
+        </VStack>
+      </Link>
+    )
+
+    return (
+      <>
+        {responses.map((response, idx) => {
+          if (idx === correct - 1) return correctItem(response, idx)
+          if (idx === elementClicked) return incorrectItem(response, idx)
+          return (
+            <Link
+              // bgColor="gray.200"
+              borderWidth="3px"
+              borderRadius="lg"
+              p={2}
+              // _hover={{ boxShadow: 'outline' }}
+              // boxShadow={elementClicked === idx ? 'outline' : undefined}
+              // outline={idx === correct - 1 ? 'solid'}
+              key={idx}
+            >
+              <VStack spacing={4} p={4}>
+                <NextChakraImage
+                  height={200 * ratio}
+                  width={150 * ratio}
+                  src={response.answerImage}
+                  quality={100}
+                  loading="eager"
+                  priority={true}
+                  objectPosition=""
+                />
+                <Text fontSize="8mm" fontWeight="600">
+                  {idx + 1}
+                </Text>
+              </VStack>
+            </Link>
+          )
+        })}
+      </>
+    )
+  }
+
+  const createCorrectFeedbackResponses = (
+    responses: ImageResponse[],
+    correct: number
+  ): JSX.Element => {
+    return (
+      <>
+        {responses.map((response, idx) => {
+          if (idx === correct - 1) return correctItem(response, idx)
+          return (
+            <Link
+              // bgColor="gray.200"
+              borderWidth="3px"
+              borderRadius="lg"
+              p={2}
+              // _hover={{ boxShadow: 'outline' }}
+              // boxShadow={elementClicked === idx ? 'outline' : undefined}
+              // outline={idx === correct - 1 ? 'solid'}
+              key={idx}
+            >
+              <VStack spacing={4} p={4}>
+                <NextChakraImage
+                  height={200 * ratio}
+                  width={150 * ratio}
+                  src={response.answerImage}
+                  quality={100}
+                  loading="eager"
+                  priority={true}
+                  objectPosition=""
+                />
+                <Text fontSize="8mm" fontWeight="600">
+                  {idx + 1}
+                </Text>
+              </VStack>
+            </Link>
+          )
+        })}
+      </>
+    )
+  }
 
   const handleClick = (idx: number): void => {
     setElementClicked(idx)
@@ -265,8 +268,8 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
   const question = (
     <>
       <NextChakraImage
-        height={300 * ratio}
-        width={300 * ratio}
+        height={250 * ratio}
+        width={250 * ratio}
         src={stimulus}
         quality={100}
         loading="eager"
@@ -286,8 +289,8 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
           >
             <VStack spacing={4} p={4}>
               <NextChakraImage
-                height={300 * ratio}
-                width={200 * ratio}
+                height={200 * ratio}
+                width={150 * ratio}
                 src={response.answerImage}
                 quality={100}
                 loading="eager"
@@ -321,21 +324,21 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
         onEnded={() => setShowButton(true)}
       />
       <NextChakraImage
-        height="70mm"
-        width="70mm"
+        height={250 * ratio}
+        width={250 * ratio}
         src={stimulus}
         quality={100}
         loading="eager"
         priority={true}
       />
+      <HStack spacing={15}>
+        {createIncorrectFeedbackResponses(responses, correct, elementClicked)}
+      </HStack>
       <Heading>Incorrect</Heading>
       <Text fontSize="6mm" fontWeight="600">
         Not quite. Actually, I like this one because it matches the object
         exactly
       </Text>
-      <HStack spacing={15}>
-        {createIncorrectFeedbackResponses(responses, correct, elementClicked)}
-      </HStack>
       <VStack spacing={2}>
         {showButton ? (
           <Button
@@ -366,20 +369,20 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
         onEnded={() => setShowButton(true)}
       />
       <NextChakraImage
-        height="70mm"
-        width="70mm"
+        height={250 * ratio}
+        width={250 * ratio}
         src={stimulus}
         quality={100}
         loading="eager"
         priority={true}
       />
+      <HStack spacing={15}>
+        {createCorrectFeedbackResponses(responses, correct)}
+      </HStack>
       <Heading>Correct!</Heading>
       <Text fontSize="6mm" fontWeight="600">
         That&apos;s right!
       </Text>
-      <HStack spacing={15}>
-        {createCorrectFeedbackResponses(responses, correct)}
-      </HStack>
       <VStack spacing={2}>
         {showButton ? (
           <Button

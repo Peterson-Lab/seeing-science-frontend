@@ -31,7 +31,7 @@ export const SelectImage: React.FC<SelectImageProps> = ({
     throw new TimelineNodeError()
   }
 
-  const ratio = timeline.ratio;
+  const ratio = timeline.ratio
 
   // handles the user submitting their selection
   const handleResponse = (idx: number): void => {
@@ -99,8 +99,8 @@ export const SelectImage: React.FC<SelectImageProps> = ({
     body = (
       <>
         <NextChakraImage
-          height={300 *  ratio}
-          width={300 * ratio}
+          height={250 * ratio}
+          width={250 * ratio}
           src={stimulus}
           quality={100}
           loading="eager"
@@ -120,8 +120,8 @@ export const SelectImage: React.FC<SelectImageProps> = ({
             >
               <VStack spacing={4} p={4}>
                 <NextChakraImage
-                  height={300 * ratio}
-                  width={200 * ratio}
+                  height={200 * ratio}
+                  width={150 * ratio}
                   src={response.answerImage}
                   quality={100}
                   loading="eager"
