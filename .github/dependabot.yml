@@ -1,0 +1,37 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@sentry/node"
+    versions:
+    - 6.3.1
+  - dependency-name: "@sentry/integrations"
+    versions:
+    - 6.3.1
+  - dependency-name: "@types/node"
+    versions:
+    - 15.0.0
+  - dependency-name: react-unity-webgl
+    versions:
+    - 8.3.5
+    - 8.3.7
+  - dependency-name: framer-motion
+    versions:
+    - 4.1.6
+  - dependency-name: react-hook-form
+    versions:
+    - 7.2.3
+  - dependency-name: react-query
+    versions:
+    - 3.13.11
+    - 3.13.7
+  - dependency-name: next-transpile-modules
+    versions:
+    - 6.4.0
+  - dependency-name: eslint-plugin-react
+    versions:
+    - 7.23.2
