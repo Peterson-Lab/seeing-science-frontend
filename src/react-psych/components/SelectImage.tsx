@@ -13,7 +13,7 @@ export type SelectImageProps = ImageQuestionFields & {
   timeline?: TimelineNodeProps
 }
 
-const getFileNameFromPath = (str: string): string =>
+export const getFileNameFromPath = (str: string): string =>
   str.substring(str.lastIndexOf('/') + 1, str.lastIndexOf('.'))
 
 export const SelectImage: React.FC<SelectImageProps> = ({

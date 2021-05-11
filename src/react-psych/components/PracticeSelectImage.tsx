@@ -18,6 +18,7 @@ import {
   TimelineNodeProps,
 } from '../types'
 import { TimelineNodeError } from '../utils/errors'
+import { getFileNameFromPath } from './SelectImage'
 
 export type PracticeSelectImageProps = ImageQuestionFields & {
   timeline?: TimelineNodeProps
@@ -209,18 +210,16 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
     setShow('feedback')
   }
 
-  // // handles the user submitting their selection
-  // const handleResponse = (): void => {
-  //   const isCorrectResponse = elementClicked === correct - 1
-  //   setIsCorrect(isCorrectResponse)
-  //   setShow('feedback')
-  //   // timeline.onFinish(userResponse)
-  // }
-
   const handleFeedbackResponse = (): void => {
     const responseEnd = Date.now()
 
     const responseTime = responseEnd - responseStart
+
+    const targetFile = getFileNameFromPath(stimulus)
+    const responseFile_1 = getFileNameFromPath(responses[0].answerImage)
+    const responseFile_2 = getFileNameFromPath(responses[1].answerImage)
+    const responseFile_3 = getFileNameFromPath(responses[2].answerImage)
+    const responseFile_4 = getFileNameFromPath(responses[3].answerImage)
 
     const userResponse: defaultUserResponse = {
       type: 'practice',
@@ -228,6 +227,11 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
       response: elementClicked + 1,
       correct: isCorrect,
       time: responseTime,
+      targetFile,
+      responseFile_1,
+      responseFile_2,
+      responseFile_3,
+      responseFile_4,
     }
     timeline.onFinish(userResponse)
   }
