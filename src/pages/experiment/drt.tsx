@@ -85,8 +85,8 @@ const ReactPsych: React.FC = () => {
               buttonText="Next"
             >
               <Text fontSize="25px">
-                Press the play button below the video player to begin playing
-                the video!
+                Press the play button in the bottom left corner of the video
+                player to begin playing the video!
               </Text>
             </MultipleVideoScreen>
             <VideoScreen

@@ -1,6 +1,5 @@
 import { Button, HStack, Icon, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import { FaPause, FaPlay } from 'react-icons/fa'
 import { MdReplay } from 'react-icons/md'
 import ReactPlayer, { ReactPlayerProps } from 'react-player'
 import { getResponseTime, useResponseStart } from '../hooks/useResponseStart'
@@ -49,15 +48,12 @@ export const MultipleVideoScreen: React.FC<MultipleVideoScreen> = ({
     }
     if (!hasBacked) setShowButtons(false)
     setCurrentVideo((vid) => (vid += 1))
+    player.current?.seekTo(0, 'fraction')
   }
 
   const handleBack = (): void => {
     setHasBacked(true)
     setCurrentVideo((vid) => (vid -= 1))
-  }
-
-  const handlePlayPause = () => {
-    setPlaying((prev) => !prev)
   }
 
   const handleEnd = () => {
@@ -80,7 +76,7 @@ export const MultipleVideoScreen: React.FC<MultipleVideoScreen> = ({
       <VStack>
         <ReactPlayer
           url={urls[currentVideo]}
-          // controls={true}
+          controls={true}
           ref={player}
           width="80%"
           height="80%"
@@ -89,35 +85,36 @@ export const MultipleVideoScreen: React.FC<MultipleVideoScreen> = ({
           {...playerProps}
         />
         <HStack>
-          {ended ? (
-            <Button
-              colorScheme="blue"
-              size="lg"
-              fontSize="20px"
-              fontWeight="600"
-              onClick={() => handleReplay()}
-            >
-              <Icon mr={2} as={MdReplay} /> Replay
-            </Button>
-          ) : (
-            <Button
-              colorScheme="blue"
-              size="lg"
-              fontSize="20px"
-              fontWeight="600"
-              onClick={() => handlePlayPause()}
-            >
-              {playing ? (
-                <>
-                  <Icon mr={2} as={FaPause} /> Pause
-                </>
-              ) : (
-                <>
-                  <Icon mr={2} as={FaPlay} /> Play
-                </>
-              )}
-            </Button>
-          )}
+          {
+            ended ? (
+              <Button
+                colorScheme="blue"
+                size="lg"
+                fontSize="20px"
+                fontWeight="600"
+                onClick={() => handleReplay()}
+              >
+                <Icon mr={2} as={MdReplay} /> Replay
+              </Button>
+            ) : null
+            // <Button
+            //   colorScheme="blue"
+            //   size="lg"
+            //   fontSize="20px"
+            //   fontWeight="600"
+            //   onClick={() => handlePlayPause()}
+            // >
+            //   {playing ? (
+            //     <>
+            //       <Icon mr={2} as={FaPause} /> Pause
+            //     </>
+            //   ) : (
+            //     <>
+            //       <Icon mr={2} as={FaPlay} /> Play
+            //     </>
+            //   )}
+            // </Button>
+          }
           {showButtons ? (
             <>
               {currentVideo > 0 ? (
