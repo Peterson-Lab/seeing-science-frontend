@@ -21,6 +21,7 @@ export const useTimelineNodeFinish = (
           setId(data.response)
           return
         case 'question':
+        case 'practice':
           if (
             typeof data.response != 'number' ||
             typeof data.correct != 'boolean' ||
@@ -58,7 +59,6 @@ export const useTimelineNodeFinish = (
 
           return
         case 'resize':
-        case 'practice':
         case 'instruction':
         default:
           return
