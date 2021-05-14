@@ -7722,10 +7722,10 @@ react-full-screen@1.0.2:
   dependencies:
     fscreen "^1.0.2"
 
-react-hook-form@7.4.2:
-  version "7.4.2"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.4.2.tgz#7d68f7fbdb8477a8ed7efe880cd507a8b074f6c0"
-  integrity sha512-raKWXkD/gtOWWtnHMx53b7an3yBcJjD4DPo4c9GgsE0tL35ypHjwRHrC4DqnhI28JxcYVjqf7xcVBubrZ/ez1w==
+react-hook-form@7.5.3:
+  version "7.5.3"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.5.3.tgz#9a624fa14ec153b154891c5ebddae02ec5c2e40f"
+  integrity sha512-5T0mfJ4kCPKljd7t3Rgp7lML4Y2+kaZIeMdN6Zo/J7gBQ+WkrDBHOftdOtz4X+7/eqHGak5yL5evNpYdA9abVA==
 
 react-hotkeys-hook@^3.3.1:
   version "3.3.1"
