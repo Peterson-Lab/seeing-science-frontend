@@ -339,16 +339,16 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
         {createIncorrectFeedbackResponses(responses, correct, elementClicked)}
       </HStack>
       <Heading>Incorrect</Heading>
-      <Text fontSize="6mm" fontWeight="600">
+      <Text fontSize="5mm" fontWeight="600">
         Not quite. Actually, I like this one because it matches the object
         exactly
       </Text>
-      <VStack spacing={2}>
+      <VStack spacing={0}>
         {showButton ? (
           <Button
             colorScheme="blue"
             onClick={handleFeedbackResponse}
-            mt="5mm"
+            mt="2mm"
             size="lg"
             height="15mm"
             width="50mm"
@@ -384,15 +384,15 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
         {createCorrectFeedbackResponses(responses, correct)}
       </HStack>
       <Heading>Correct!</Heading>
-      <Text fontSize="6mm" fontWeight="600">
+      <Text fontSize="5mm" fontWeight="600">
         That&apos;s right!
       </Text>
-      <VStack spacing={2}>
+      <VStack spacing={0}>
         {showButton ? (
           <Button
             colorScheme="blue"
             onClick={handleFeedbackResponse}
-            mt="5mm"
+            mt="2mm"
             size="lg"
             height="15mm"
             width="50mm"
@@ -438,8 +438,8 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
       </Box>
       {/* The actual shown part. Body starts as just the + and then is rerendered as the question, then the feedback */}
       <VStack
-        mt="10mm"
-        spacing="10mm"
+        mt="-50px"
+        spacing="5mm"
         display={timeline.isActive ? 'flex' : 'none'}
       >
         {body}

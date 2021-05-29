@@ -172,8 +172,8 @@ export const SelectImage: React.FC<SelectImageProps> = ({
       </Box>
       {/* The actual shown part. Body starts as just the + and then is rerendered as the question */}
       <VStack
-        mt="10mm"
-        spacing="10mm"
+        mt="-50px"
+        spacing="5mm"
         display={timeline.isActive ? 'flex' : 'none'}
       >
         {body}
