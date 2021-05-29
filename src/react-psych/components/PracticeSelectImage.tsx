@@ -65,7 +65,7 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
   const correctItem = (response: ImageResponse, idx: number): JSX.Element => (
     <Link
       // bgColor="gray.200"
-      borderWidth="3px"
+      borderWidth="4px"
       borderRadius="lg"
       p={2}
       // _hover={{ boxShadow: 'outline' }}
