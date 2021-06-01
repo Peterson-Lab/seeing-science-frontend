@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Heading,
-  HStack,
-  Link,
-  Text,
-  VStack,
-} from '@chakra-ui/react'
+import { Box, Heading, HStack, Link, Text, VStack } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player'
 import { NextChakraImage } from '../../components/NextChakraImage'
@@ -54,7 +46,6 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
   const [elementClicked, setElementClicked] = useState(-1)
   const [show, setShow] = useState<showState>('cross')
   const [isCorrect, setIsCorrect] = useState(false)
-  const [showButton, setShowButton] = useState(false)
 
   // checks that the timeline props were passed.
   if (!timeline) {
@@ -203,11 +194,13 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
     )
   }
 
-  const handleClick = (idx: number): void => {
+  const handleClick = async (idx: number): Promise<void> => {
     setElementClicked(idx)
     const isCorrectResponse = idx === correct - 1
     setIsCorrect(isCorrectResponse)
     setShow('feedback')
+    await sleep(10000)
+    handleFeedbackResponse()
   }
 
   const handleFeedbackResponse = (): void => {
@@ -282,7 +275,6 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
       <HStack spacing={15}>
         {responses.map((response, idx) => (
           <Link
-            // bgColor="gray.200"
             borderWidth="3px"
             borderRadius="lg"
             p={2}
@@ -325,7 +317,6 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
         playing={true}
         volume={1}
         height="0px"
-        onEnded={() => setShowButton(true)}
       />
       <NextChakraImage
         height={250 * ratio}
@@ -343,23 +334,6 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
         Not quite. Actually, I like this one because it matches the object
         exactly
       </Text>
-      <VStack spacing={0}>
-        {showButton ? (
-          <Button
-            colorScheme="blue"
-            onClick={handleFeedbackResponse}
-            mt="2mm"
-            size="lg"
-            height="15mm"
-            width="50mm"
-            fontSize="10mm"
-            fontWeight="800"
-            display="flex"
-          >
-            Next
-          </Button>
-        ) : null}
-      </VStack>
     </>
   )
 
@@ -370,7 +344,6 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
         playing={true}
         volume={1}
         height="0px"
-        onEnded={() => setShowButton(true)}
       />
       <NextChakraImage
         height={250 * ratio}
@@ -387,23 +360,6 @@ export const PracticeSelectImage: React.FC<PracticeSelectImageProps> = ({
       <Text fontSize="5mm" fontWeight="600">
         That&apos;s right!
       </Text>
-      <VStack spacing={0}>
-        {showButton ? (
-          <Button
-            colorScheme="blue"
-            onClick={handleFeedbackResponse}
-            mt="2mm"
-            size="lg"
-            height="15mm"
-            width="50mm"
-            fontSize="10mm"
-            fontWeight="800"
-            display="flex"
-          >
-            Next
-          </Button>
-        ) : null}
-      </VStack>
     </>
   )
 
