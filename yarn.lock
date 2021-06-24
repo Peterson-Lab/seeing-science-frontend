@@ -7797,10 +7797,10 @@ react-transition-group@^4.3.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react-unity-webgl@^7.x:
-  version "7.1.10"
-  resolved "https://registry.yarnpkg.com/react-unity-webgl/-/react-unity-webgl-7.1.10.tgz#e180827b812dc0fcc5be9a450a00b32c29addb36"
-  integrity sha512-p9N4vyPkcu6sqBAsBblZ7/1DF82Iqg5ne1lvfQEMbRdXS3V97qEX6qyFIxUXDUNs51AidTRsSz90D8qWbYV0HA==
+react-unity-webgl@^8.x:
+  version "8.4.3"
+  resolved "https://registry.yarnpkg.com/react-unity-webgl/-/react-unity-webgl-8.4.3.tgz#b01c93751df5a7868db3c23f492cf3d2f0db2795"
+  integrity sha512-Ue/ktrsChAt/D7vWfpLWF8HFR6h90s4XvkJbSy4y436QJGEXNlana78qTsPrGfDCV0p5OeFoz5quFe0Hkld1TA==
 
 react@^0.14.3:
   version "0.14.10"
