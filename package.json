@@ -15,7 +15,7 @@
     "@emotion/react": "11.4.0",
     "@emotion/styled": "11.3.0",
     "@sentry/browser": "^6.4.0",
-    "@sentry/integrations": "^6.4.0",
+    "@sentry/integrations": "^7.14.1",
     "@sentry/node": "^6.4.0",
     "@sentry/webpack-plugin": "^1.15.1",
     "date-fns": "^2.21.3",
