@@ -1953,13 +1953,13 @@
     "@sentry/utils" "6.4.0"
     tslib "^1.9.3"
 
-"@sentry/integrations@^6.4.0":
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/@sentry/integrations/-/integrations-6.4.0.tgz#78f618e6b3c9d827588ee05a23d180357e31b2a6"
-  integrity sha512-RWSXzliop0+qNa2oKEM4MsRz3/odxXepbTrIH/B2xDNQfjaSCD1dbuXD7SXnrAMatT3GLbL9GAorBMs7r/CsYg==
+"@sentry/integrations@^7.24.2":
+  version "7.24.2"
+  resolved "https://registry.yarnpkg.com/@sentry/integrations/-/integrations-7.24.2.tgz#f435c0323eb9e18ee80364741c8ef973e6ba859b"
+  integrity sha512-olxbRWzwAmA1K8tQkKxeLt4vOmRla3QMlzlQNPsVT2wkx96cjn3L/3D/Fpwlmru+wGpYsX1iNh0eH1OOqTTt4Q==
   dependencies:
-    "@sentry/types" "6.4.0"
-    "@sentry/utils" "6.4.0"
+    "@sentry/types" "7.24.2"
+    "@sentry/utils" "7.24.2"
     localforage "^1.8.1"
     tslib "^1.9.3"
 
@@ -2003,12 +2003,25 @@
   resolved "https://registry.yarnpkg.com/@sentry/types/-/types-6.4.0.tgz#e856c33740f7fd05da12145f006ecbd461cbdacf"
   integrity sha512-kwFkb+fCoZyHHuSIW/T+pzifkxDCmi6extvtYxa6YtVgl/mZIom9yme0uQFy4EdYLIBZ+9IQDGtQmNMKrVIdKQ==
 
+"@sentry/types@7.24.2":
+  version "7.24.2"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-7.24.2.tgz#2ef728db8eea14de8ba916896837d0cbeb3d28da"
+  integrity sha512-x2LEnKBPzUVzTGspvB0CjZmt1dWeJsLVHGeDKPUMUm004nIscFCxJsmYefqaJQdaIUMqDit5ApwcmKchuK6VKQ==
+
 "@sentry/utils@6.4.0":
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-6.4.0.tgz#b6d81c1f05b74e6c873847b11bce5f67c16b7e75"
   integrity sha512-82cF5dpaM8lDyeztOjL7ZLDFgzJHDoc1m8LlZXxf9gWvOybH7uCe3WasC9qK1lHYMrh1Z9Qfqe+mJBdxm3QzJw==
   dependencies:
     "@sentry/types" "6.4.0"
+    tslib "^1.9.3"
+
+"@sentry/utils@7.24.2":
+  version "7.24.2"
+  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-7.24.2.tgz#7120a8d36bd1d05043c902a0f22fbc2012fe2116"
+  integrity sha512-VuuYEF39v43Qk6YZMid8Em/N0HqCsS5ItuTSvunMtBai2dzDAIkJ2LqemF95wWFAXrzpLy4Nx3QyGVHayMn31A==
+  dependencies:
+    "@sentry/types" "7.24.2"
     tslib "^1.9.3"
 
 "@sentry/webpack-plugin@^1.15.1":
